@@ -1,0 +1,27 @@
+# Rust / cargo
+target/
+
+# Node / Vite
+node_modules/
+dist/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Local runtime data
+media/
+pgdata/
+*.log
+
+# Editor / OS
+*.swp
+*.swo
+*~
+.DS_Store
+.idea/
+.vscode/
