@@ -58,20 +58,20 @@ Acceptance criteria:
 
 ## Phase 4 — CMS
 
-- [ ] Login.
-- [ ] Dashboard.
-- [ ] HOME editor.
-- [ ] Content list.
-- [ ] Content editor.
-- [ ] Media library.
-- [ ] Ordering.
-- [ ] Publish/archive.
-- [ ] Kiosk preview.
+- [x] Login.
+- [x] Dashboard.
+- [x] HOME editor.
+- [x] Content list.
+- [x] Content editor.
+- [x] Media library.
+- [x] Ordering.
+- [x] Publish/archive.
+- [x] Kiosk preview.
 
 Acceptance criteria:
-- admin can create HOME buttons
-- admin can create/edit content
-- player reflects published changes
+- [x] admin can create HOME buttons
+- [x] admin can create/edit content
+- [x] player reflects published changes
 
 ---
 
