@@ -2,14 +2,14 @@
 
 ## Phase 1 — Repository bootstrap
 
-- [ ] Create Rust workspace.
-- [ ] Create `apps/cms-web`.
-- [ ] Create `apps/player-web`.
-- [ ] Create `crates/api`.
-- [ ] Add `.env.example`.
-- [ ] Add compose/Podman development environment.
-- [ ] Add formatting and linting configuration.
-- [ ] Add CI-style local commands.
+- [x] Create Rust workspace.
+- [x] Create `apps/cms-web`.
+- [x] Create `apps/player-web`.
+- [x] Create `crates/api`.
+- [x] Add `.env.example`.
+- [x] Add compose/Podman development environment.
+- [x] Add formatting and linting configuration.
+- [x] Add CI-style local commands.
 
 Acceptance criteria:
 - backend compiles
@@ -30,9 +30,9 @@ Acceptance criteria:
 - [x] Add publication state.
 
 Acceptance criteria:
-- clean DB can migrate from zero
-- migrations tested against PostgreSQL
-- repository/domain tests pass
+- [x] clean DB can migrate from zero
+- [x] migrations tested against PostgreSQL
+- [x] repository/domain tests pass
 
 ---
 
@@ -49,10 +49,10 @@ Acceptance criteria:
 - [x] tracing
 
 Acceptance criteria:
-- admin routes authenticated
-- player routes local/public
-- invalid uploads rejected
-- integration tests pass
+- [x] admin routes authenticated
+- [x] player routes local/public
+- [x] invalid uploads rejected
+- [x] integration tests pass
 
 ---
 

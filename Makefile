@@ -1,3 +1,6 @@
+-include .env
+export
+
 .PHONY: dev-api dev-cms dev-player dev-db build lint fmt fmt-check test check clean
 
 dev-db:
