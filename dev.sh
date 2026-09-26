@@ -160,7 +160,7 @@ start_cms() {
   log "Starting CMS web dev server on http://127.0.0.1:${CMS_PORT}..."
   log "  (pointing to API at ${API_BASE_URL})"
   cd "${SCRIPT_DIR}/apps/cms-web"
-  VITE_API_URL="${API_BASE_URL}" VITE_PLAYER_URL="${PLAYER_URL}" npm run dev &
+  VITE_API_URL="${API_BASE_URL}" VITE_PLAYER_URL="${PLAYER_URL}" npm run dev -- --host 127.0.0.1 &
   PIDS+=("$!")
   cd "$SCRIPT_DIR"
 }
@@ -168,7 +168,7 @@ start_cms() {
 start_player() {
   log "Starting Player web dev server on http://127.0.0.1:${PLAYER_PORT}..."
   cd "${SCRIPT_DIR}/apps/player-web"
-  npm run dev &
+  npm run dev -- --host 127.0.0.1 &
   PIDS+=("$!")
   cd "$SCRIPT_DIR"
 }
