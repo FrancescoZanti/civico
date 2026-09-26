@@ -15,6 +15,7 @@ use axum::http::StatusCode;
 use axum::routing::get;
 use axum::{Router, routing::post};
 use serde::Serialize;
+use tower_http::cors::CorsLayer;
 
 use crate::error::ApiError;
 use crate::state::AppState;
@@ -102,5 +103,6 @@ pub fn build_router(state: AppState) -> Router {
             "/api/v1/media/{id}/file",
             get(handlers::admin_media::serve_media_file),
         )
+        .layer(CorsLayer::permissive())
         .with_state(state)
 }
