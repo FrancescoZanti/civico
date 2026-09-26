@@ -93,14 +93,19 @@ set +a
 : "${DATABASE_URL:?DATABASE_URL is not set in .env}"
 : "${JWT_SECRET:?JWT_SECRET is not set in .env}"
 
-API_PORT="${API_BIND:-127.0.0.1:8080}"
-API_PORT="${API_PORT##*:}"
+API_BIND="${API_BIND:-127.0.0.1:8080}"
+API_PORT="${API_BIND##*:}"
 CMS_PORT=8082
 PLAYER_PORT=8081
 
+# Derive the API base URL used by the frontend dev servers.
+# Defaults to http:// + API_BIND so a custom API port is automatically picked up.
+API_BASE_URL="${VITE_API_URL:-http://${API_BIND}}"
+PLAYER_URL="${VITE_PLAYER_URL:-http://127.0.0.1:${PLAYER_PORT}}"
+
 for port in "$API_PORT" "$CMS_PORT" "$PLAYER_PORT"; do
   if is_port_in_use "$port"; then
-    err "Port ${port} is already in use. Stop the conflicting service first."
+    err "Port ${port} is already in use. Stop the conflicting service first or change it in .env."
   fi
 done
 
@@ -153,8 +158,9 @@ start_api() {
 
 start_cms() {
   log "Starting CMS web dev server on http://127.0.0.1:${CMS_PORT}..."
+  log "  (pointing to API at ${API_BASE_URL})"
   cd "${SCRIPT_DIR}/apps/cms-web"
-  npm run dev &
+  VITE_API_URL="${API_BASE_URL}" VITE_PLAYER_URL="${PLAYER_URL}" npm run dev &
   PIDS+=("$!")
   cd "$SCRIPT_DIR"
 }
@@ -194,9 +200,9 @@ start_player
 
 log ""
 log "All services starting."
-log "  API:    http://${API_BIND:-127.0.0.1:8080}"
+log "  API:    ${API_BASE_URL}"
 log "  CMS:    http://127.0.0.1:${CMS_PORT}"
-log "  Player: http://127.0.0.1:${PLAYER_PORT}"
+log "  Player: ${PLAYER_URL}"
 log ""
 log "Press Ctrl+C to stop everything."
 
