@@ -37,7 +37,34 @@ I frontend CMS e player sono impostati ma i loro flussi principali (editor HOME,
 
 ## Come si avvia in sviluppo
 
-Prima di tutto il database:
+Il modo più rapido è usare lo script `dev.sh`, che avvia tutto in un colpo:
+
+```bash
+./dev.sh
+```
+
+Lo script:
+
+1. verifica i prerequisiti (`cargo`, `npm`, `sqlx-cli`, Podman o Docker)
+2. crea `.env` da `.env.example` se manca
+3. avvia PostgreSQL
+4. esegue le migrazioni del database
+5. lancia API, CMS e Player in parallelo
+6. gestisce la chiusura pulita con `Ctrl+C`
+
+Dopo qualche secondo i servizi saranno disponibili su:
+
+| Servizio | URL |
+| --- | --- |
+| API | `http://127.0.0.1:8080` |
+| CMS admin | `http://127.0.0.1:8082` |
+| Player | `http://127.0.0.1:8081` |
+
+> ⚠️ Assicurati che le porte `8080`, `8081` e `8082` siano libere. Se una è occupata, cambia la porta in `.env`.
+
+### Avvio manuale (alternativa a `dev.sh`)
+
+Se preferisci controllare ogni componente separatamente, avvia prima il database:
 
 ```bash
 make dev-db
